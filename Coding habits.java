@@ -45,3 +45,9 @@ public class fall {
  public Manager(String name, Employee[] directReports){
     this(name, DEFAULT_SALARY, direct);
  }
+
+ //Always add @override when overrides. Because if @Override, the compiler knows, and the method name and params must override from the extended method.
+ 
+       
+// 
+ 
