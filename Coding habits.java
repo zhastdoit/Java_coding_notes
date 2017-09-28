@@ -50,4 +50,40 @@ public class fall {
  
        
 // 
+@override public boolean equals(object obj){
+  if (this == obj) {
+    return true;
+  } 
+  if((obj == null) || (getclass() != obj.getClass()){
+    return false;
+  }
+  // name is from super
+  // Cast it
+  Manager manager = (Manager) obj;
+  // Do the check
+  return(getName() == null ? manager.getName() == null : getName().equals(manager.getName() && (getSalary() == manager.getSalary()));
+}
  
+         
+ @Override public int hashCode(){
+   int prime =31;
+   int result = (getName() == null ? O : getName().hashCode());
+   result = prime * hash + (Double.valueOf(getSalary()).hashCode()); //in (): If primitive, depend on primitive. Cannot hash double to an int. For int to double, we can just "add" it
+ }
+         
+         
+ private void boxingExample(){
+   int value = 1;
+   //Integer valueAsObject = value;
+   
+   int foo = valueAsObject.intValue();  // works for all other types.
+   double bar =1d;
+   Double barValue = null; //Can be null... SO can be problematic as the following:
+   
+   add(1d, 2d);//fine
+   add(null, 2d);//Trouble!  "No pointer Exception."
+ }
+ private double add(Double foo, Double bar){
+    return(foo + bar);
+ }
+         
