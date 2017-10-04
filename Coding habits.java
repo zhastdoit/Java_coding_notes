@@ -87,3 +87,39 @@ public class fall {
     return(foo + bar);
  }
          
+
+/// Oct 4
+//Use @override to get rid of typo in method names and params 
+        
+public class Foo extends Bar implements BookReader{
+  @Override public void read(Book book){
+  
+  }
+  @Override public void read(String test){
+    super.read(text);
+    System.out.println("Howdy:" + test);
+  }
+}
+//Override is override and implement. 
+         
+public class Bar   {
+   public static void main(){
+    //Foo reader = new Foo();
+     //Reader reader = new Foo(); x
+     //Bar reader = new Foo(); y 2 line output
+     //Bar reader = new bar(); y 1 line output
+     reader.read("Prof!");  //List<> l = new LinkedList<>();
+   }
+   public void read(String test){
+      System.out.println("Hello" + test);
+   }
+}
+         
+ //List<String> l = new ArrayList<>()
+ //When compile, it consider l as List. when run, it consider l as ArrayList
+          
+         
+         
+         
+         
+         
