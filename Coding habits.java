@@ -105,7 +105,7 @@ public class Foo extends Bar implements BookReader{
 public class Bar   {
    public static void main(){
     //Foo reader = new Foo();
-     //Reader reader = new Foo(); x
+     //Reader reader = new Foo(); x??
      //Bar reader = new Foo(); y 2 line output
      //Bar reader = new bar(); y 1 line output
      reader.read("Prof!");  //List<> l = new LinkedList<>();
@@ -117,8 +117,29 @@ public class Bar   {
          
  //List<String> l = new ArrayList<>()
  //When compile, it consider l as List. when run, it consider l as ArrayList
-          
+
          
+         
+//
+public interface Downloader{
+    public void downloadURL(String url, DownloadCallback dc ){
+        //use void instead of byte[] ---  usually run on another Thread
+        
+    }         
+}
+         
+public class DownloadCallback
+public vvoid downloadComplte, ){
+    
+}
+     public class myCode{
+          
+       new Download ..
+       
+     }
+ 
+     
+ //
          
          
          
