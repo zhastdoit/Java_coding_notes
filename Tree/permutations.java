@@ -4,7 +4,14 @@
 
 
 class Solution {
-    // Method 1: Recursion Tree ***Time Complexity: O(n!)  N factorial ***
+    // Method 1: Recursion Tree ***Time Complexity: O(n!)  N factorial ***    
+    /* Method 1: Recursion Tree
+        First level n choice
+        Second level n-1 choice
+         ...
+        Last level 1 choice
+        Time complexity: O(n!)
+    */
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         if(nums == null || nums.length == 0) {
