@@ -4,7 +4,7 @@
 
 
 class Solution {
-    // Method 1: Recursion Tree
+    // Method 1: Recursion Tree ***Time Complexity: O(n!)  N factorial ***
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         if(nums == null || nums.length == 0) {
