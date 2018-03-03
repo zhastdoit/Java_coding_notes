@@ -1,18 +1,24 @@
 # Java8 Useful methods summary:
 
-#### Comparator
+#### Comparator 
+Lambda Expression
 ```java
 Collections.sort(list, (a, b) -> a - b);
 ```
 
 #### Print List<List<>>
+stream API
 ```java
 list.stream().forEach(a -> System.out.println(a));
+```
+Better:
+```java
+list.stream().forEach(System.out::println);
 ```
 
 #### Output as list
 ```java
-collect(Collectors.toList());
+list.stream().collect(Collectors.toList());
 ```
 
 #### Filter
