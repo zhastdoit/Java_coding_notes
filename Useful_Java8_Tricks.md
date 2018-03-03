@@ -1,17 +1,23 @@
 # Java8 Useful methods summary:
 
 #### Comparator
-`Collections.sort(list, (a, b) -> a - b);`
+```java
+Collections.sort(list, (a, b) -> a - b);
+```
 
 #### Print List<List<>>
-`list.stream().forEach(a -> System.out.println(a));`
+```java
+list.stream().forEach(a -> System.out.println(a));
+```
 
 #### Output as list
-`collect(Collectors.toList());`
+```java
+collect(Collectors.toList());
+```
 
 #### Filter
 ```java
 Stream<Integer> number = Stream.of(1, 2, 3, 4, 5);  
-List<Integer> result2 = number.filter(x -> x!= 3).collect(Collectors.toList());  
-result2.forEach(x -> System.out.println(x));
+List<Integer> result = number.filter(a -> a!= 2).collect(Collectors.toList());  
+result.forEach(a -> System.out.println(a));
 ```
