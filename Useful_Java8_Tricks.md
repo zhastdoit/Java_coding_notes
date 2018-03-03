@@ -10,6 +10,6 @@
 `collect(Collectors.toList());`
 
 #### Filter
-`Stream<Integer> number = Stream.of(1, 2, 3, 4, 5);
-List<Integer> result2 = number.filter(x -> x!= 3).collect(Collectors.toList());
+`Stream<Integer> number = Stream.of(1, 2, 3, 4, 5);  
+List<Integer> result2 = number.filter(x -> x!= 3).collect(Collectors.toList());  
 result2.forEach(x -> System.out.println(x));`
