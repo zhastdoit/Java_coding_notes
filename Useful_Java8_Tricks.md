@@ -27,3 +27,8 @@ Stream<Integer> number = Stream.of(1, 2, 3, 4, 5);
 List<Integer> result = number.filter(a -> a!= 2).collect(Collectors.toList());  
 result.forEach(a -> System.out.println(a));
 ```
+
+#### Check if contains Condition
+```java
+boolean contains =  IntStream.of(a).anyMatch(x -> x == 4);
+```
