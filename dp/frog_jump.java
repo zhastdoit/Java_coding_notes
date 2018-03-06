@@ -1,3 +1,6 @@
+/*
+    DP: O(n^2) solution
+*/
 class Solution {
     public boolean canCross(int[] stones) {
         //DP solution. 
@@ -13,11 +16,11 @@ class Solution {
         }
         Set<Integer> firstStep = map.get(1);
         firstStep.add(1);
-        for(int stone : stones) {
+        for(int stone : stones) {  // O(n)
             if(stone == 0) {
                 continue;
             }
-            for(int step : map.get(stone)) {
+            for(int step : map.get(stone)) {  //This for loop and the inner for loop: O(k steps * n stones) ~ O(n)
                 for(int i = step - 1; i <= step + 1; i++) {
                     if(i <= 0) {
                         continue;
