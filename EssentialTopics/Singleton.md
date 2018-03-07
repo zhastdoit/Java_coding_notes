@@ -1,6 +1,14 @@
 
-## General Idea:
-#### v0.5 Classic Singleton with Factory Method (Bad)
+Singleton is a widely discussed and used Design Pattern. It's core idea is to "make the class itself responsible to control its instantiation that is intantiated only once".
+
+## Why we need Singleton?  
+
+> Sometimes it's appropriate to have exactly one instance of a class: window managers, print spoolers, and filesystems are prototypical examples. Typically, those types of objects—known as singletons—are accessed by disparate objects throughout a software system, and therefore require a global point of access. Of course, just when you're certain you will never need more than one instance, it's a good bet you'll change your mind. [JavaWorld](https://www.javaworld.com/article/2073352/core-java/simply-singleton.html)
+
+## The evolution
+
+#### v0.1 Classic Singleton with Factory Method
+
 ```java
 public class Singleton {
     private static Singleton instance = null;
@@ -28,6 +36,7 @@ Two possible solutions:
   * put singleton class in explicit package, so classes in other packages cannot initiate such instances.  
 
 #### V1.0 Singleton with private constructor and static method
+
 Continue the first solution above by making the Singleton constructor private: 
 ```java
 public class Singleton {
@@ -40,9 +49,10 @@ public class Singleton {
         return singleton;
     }
 ```
-Cons: Static methods and functions are global. In the Multi-Thread circumstances, all the global sharing will be dangerous: When multiple threads are calling getInstance() at the same time, there could be multiple processes pass the `singleton == null` check and init multiple Singleton instances and it would be very likely to cause memory leak.
+Cons: Static methods and functions are global. In the Multi-Thread circumstances, all the global sharing will be dangerous: When multiple threads are calling getInstance() simultaneously, there could be race conditions (multiple processes pass the `singleton == null` check) and result in creating multiple Singleton instances and it would be very likely to cause memory leak.
 
 #### v1.5 Singleton with synchronized
+
 ```java
 public class Singleton {
     private static Singleton instance = null;
@@ -59,6 +69,7 @@ public class Singleton {
 Cons: The processes that pass the null check will serially init new instances. Does not solve the problem.
 
 #### v1.8 Singleton with synchronized for all calls
+
 ```java
 public class Singleton {
     private static Singleton instance = null;
@@ -75,7 +86,8 @@ public class Singleton {
 ```
 Cons: Although only one initialization could happen, but to reach this purpose, all the other threads that calling getInstance() at this time will also go through the synchronization, which is quite unnecessary.  
 
-#### v1.9 Singleton With Lazy Initialization [with double check] 
+#### v1.9 Singleton With Lazy Initialization (with double-checked locking)
+
 ```java
 public class Singleton {
     private static Singleton instance = null;
@@ -100,6 +112,7 @@ c) pointing the singleton object to the memory space that allocated
 Only when (c) is done we will get `instance == null` as false. When a, b, c are done in order, it is fine; However, JVM could do (c) first then do (b). Hence if there is a process called getInstance() just after (c) is finished, it will get null since (b) is not done yet. 
 
 #### v2.0  Singleton With Lazy Initialization and Volatile variable [with double check] (Good to use after JDK 1.5)
+
 ```java
 public class Singleton {
     private volatile static Singleton instance = null; //Add volatile. Available to use after JDK 1.5
@@ -121,7 +134,9 @@ Pros:
 2. This instance variable will only exist on memory - it does not have copies in threads.
 
 ## Better & easier Singleton
+
 #### Get rid of the synchronized, using volatile only
+
 ```java
 public class Singleton {
     private volatile static Singleton instance = new Singleton();
@@ -134,6 +149,7 @@ public class Singleton {
 Cons: New Singleton() will be loaded once the class is loaded - even before getInstance() is called. This could be a issue when we want this Singleton be initialize using some other resources, and control when it actually init (init it by ourselves, not the class loader).
 
 #### Inner Class - Simpler (recommendated) 
+
 ```java
 public class Singleton {
     private static class SingletonHolder {
@@ -148,7 +164,9 @@ public class Singleton {
 Pros: Singleton will only be created when getInstance() is called.
 
 ## The ideal Singleton
+
 #### enum (highly recommendated)
+
 ```java
 public enum Singleton {
     INSTANCE;
