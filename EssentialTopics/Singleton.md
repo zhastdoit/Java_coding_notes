@@ -4,7 +4,7 @@
 ```java
 public class Singleton {
     private static Singleton instance = null;
-    ~~public~~ protected Singleton() {  //In order to prevent access from other classes out of package.
+    protected Singleton() {  //In order to prevent access from other classes out of package, use protected instead of public
         instance = new Singleton();   
     }
     public Singleton getInstance() {
