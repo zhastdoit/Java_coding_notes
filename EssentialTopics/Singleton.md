@@ -24,8 +24,8 @@ public class SingletonInstantiator {
 ```
 We are still able to create multiple instances.
 Two possible solutions:  
-..1. make Singleton constructor private and make Singleton class final.   
-..2. put singleton class in explicit package, so classes in other packages cannot initiate such instances.  
+  1. make Singleton constructor private and make Singleton class final.   
+  2. put singleton class in explicit package, so classes in other packages cannot initiate such instances.  
 
 
 
