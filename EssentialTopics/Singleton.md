@@ -1,5 +1,5 @@
 
-
+## General Idea:
 #### v0.5 Classic Singleton with Factory Method (Bad)
 ```java
 public class Singleton {
@@ -99,7 +99,7 @@ b) call constructor to init singleton and create instance,
 c) pointing the singleton object to the memory space that allocated  
 Only when (c) is done we will get `instance == null` as false. When a, b, c are done in order, it is fine; However, JVM could do (c) first then do (b). Hence if there is a process called getInstance() just after (c) is finished, it will get null since (b) is not done yet. 
 
-#### v2.0.a  Singleton With Lazy Initialization and Volatile variable [with double check] 
+#### v2.0  Singleton With Lazy Initialization and Volatile variable [with double check] (Good to use after JDK 1.5)
 ```java
 public class Singleton {
     private volatile static Singleton instance = null; //Add volatile. Available to use after JDK 1.5
@@ -120,7 +120,8 @@ Pros:
 1. Using `volatile` will prohibit the JVM command reordering, 
 2. This instance variable will only exist on memory - it does not have copies in threads.
 
-#### Get rid of the synchronized
+## Better & easier Singleton
+#### Get rid of the synchronized, using volatile only
 ```java
 public class Singleton {
     private volatile static Singleton instance = new Singleton();
@@ -146,7 +147,7 @@ public class Singleton {
 ```
 Pros: Singleton will only be created when getInstance() is called.
 
-
+## The ideal Singleton
 #### enum (highly recommendated)
 ```java
 public enum Singleton {
@@ -165,7 +166,7 @@ public final class Singleton {
 
 
 
-References:
-[深入浅出单实例Singleton设计模式](http://blog.csdn.net/haoel/article/details/4028232)
-[JSR-133: JavaTM Memory Model and Thread Specification] (http://www.cs.umd.edu/~pugh/java/memoryModel/jsr133.pdf)
-[Java并发：volatile内存可见性和指令重排](http://blog.csdn.net/jiyiqinlovexx/article/details/50989328)
+#### References:  
+[深入浅出单实例Singleton设计模式](http://blog.csdn.net/haoel/article/details/4028232)  
+[JSR-133: JavaTM Memory Model and Thread Specification](http://www.cs.umd.edu/~pugh/java/memoryModel/jsr133.pdf)  
+[Java并发：volatile内存可见性和指令重排](http://blog.csdn.net/jiyiqinlovexx/article/details/50989328)  
